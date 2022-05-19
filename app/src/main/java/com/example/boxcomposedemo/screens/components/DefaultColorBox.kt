@@ -28,7 +28,7 @@ fun DefaultColorBox(
         colors = CardDefaults.outlinedCardColors(
             containerColor = Color(colorCard.colorValue),
         ),
-        onClick = { onClick }
+        onClick =  onClick
     ) {
         Box(
             modifier = Modifier.fillMaxSize(),
