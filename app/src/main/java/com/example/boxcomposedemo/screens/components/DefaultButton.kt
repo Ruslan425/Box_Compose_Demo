@@ -21,7 +21,7 @@ fun DefaultButton(
         Button(
             modifier = modifier,
             onClick = onClick,
-            shape = RoundedCornerShape(4.dp),
+            shape = RoundedCornerShape(24.dp),
         ) {
             Text(text)
         }
@@ -29,7 +29,7 @@ fun DefaultButton(
         OutlinedButton(
             modifier = modifier,
             onClick = onClick,
-            shape = RoundedCornerShape(4.dp)
+            shape = RoundedCornerShape(24.dp)
         ) {
             Text(text = text)
         }

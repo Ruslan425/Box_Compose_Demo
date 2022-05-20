@@ -9,12 +9,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.boxcomposedemo.MainViewModel
+import com.example.boxcomposedemo.navigation.Screens
 import com.example.boxcomposedemo.screens.components.DefaultButton
 import com.example.boxcomposedemo.screens.components.DefaultEditTextField
 
 @Composable
 fun SingUp(
-    navHostController: NavHostController
+    navHostController: NavHostController,
+    mainViewModel: MainViewModel
 ) {
     val stateLogin = remember { mutableStateOf(TextFieldValue("")) }
     val statePassword = remember { mutableStateOf(TextFieldValue("")) }
@@ -28,28 +31,28 @@ fun SingUp(
     ) {
         DefaultEditTextField(
             modifier = Modifier
-                .size(width = 250.dp, height = 60.dp),
+                .size(width = 350.dp, height = 60.dp),
             textState = stateLogin,
             labelText = "Email",
         )
         Spacer(modifier = Modifier.padding(8.dp))
         DefaultEditTextField(
             modifier = Modifier
-                .size(width = 250.dp, height = 60.dp),
+                .size(width = 350.dp, height = 60.dp),
             textState = stateUserName,
             labelText = "User Name",
         )
         Spacer(modifier = Modifier.padding(8.dp))
         DefaultEditTextField(
             modifier = Modifier
-                .size(width = 250.dp, height = 60.dp),
+                .size(width = 350.dp, height = 60.dp),
             textState = statePassword,
             labelText = "Password",
         )
         Spacer(modifier = Modifier.padding(8.dp))
         DefaultEditTextField(
             modifier = Modifier
-                .size(width = 250.dp, height = 60.dp),
+                .size(width = 350.dp, height = 60.dp),
             textState = statePassword2,
             labelText = "Repeat Password",
         )
@@ -57,10 +60,19 @@ fun SingUp(
         Spacer(modifier = Modifier.padding(24.dp))
 
         DefaultButton(
-            onClick = { },
+            onClick = {
+
+                      mainViewModel.getUser(
+                          userName = stateUserName.value.text,
+                          email = stateLogin.value.text,
+                          password = statePassword.value.text
+                      )
+
+                navHostController.navigate(Screens.ProfileTab.route)
+            },
             text = "Create Account",
             modifier = Modifier
-                .size(width = 300.dp, height = 50.dp)
+                .size(width = 350.dp, height = 50.dp)
 
         )
 
