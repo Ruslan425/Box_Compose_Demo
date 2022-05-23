@@ -12,10 +12,44 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.random.Random
 
-class MainViewModel: ViewModel() {
+class MainViewModel : ViewModel() {
 
     var uiState by mutableStateOf(User())
 
+    var listByColorCard by mutableStateOf(
+        listOf(
+            ColorCard(
+                id = 0,
+                colorName = "Red",
+                colorValue = 0xFF880000
+            ),
+            ColorCard(
+                id = 1,
+                colorName = "Green",
+                colorValue = 0xFF228B22
+            ),
+            ColorCard(
+                id = 2,
+                colorName = "Blue",
+                colorValue = 0xFF000088
+            ),
+            ColorCard(
+                id = 3,
+                colorName = "Yellow",
+                colorValue = 0xFF888800
+            ),
+            ColorCard(
+                id = 4,
+                colorName = "Violet",
+                colorValue = 0xFF8800FF
+            ),
+            ColorCard(
+                id = 5,
+                colorName = "Black",
+                colorValue = 0xFF000000
+            )
+        )
+    )
 
 
     @SuppressLint("SimpleDateFormat")
@@ -30,31 +64,20 @@ class MainViewModel: ViewModel() {
         )
         val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
         val currentDate = sdf.format(Date())
-
         uiState = User(
             id = id,
             userName = userName,
             email = email,
             password = password,
-            colorCardList = listOf(
-                ColorCard(
-                    id = 1,
-                    colorName = "Red",
-                    colorValue = 0xFF880000
-                ),
-                ColorCard(
-                    id = 2,
-                    colorName = "Blue",
-                    colorValue = 0xFF000088
-                ),
-                ColorCard(
-                    id = 3,
-                    colorName = "Green",
-                    colorValue = 0xFF008800
-                )
-            ),
+            colorCardList = listByColorCard,
             createData = currentDate
         )
+    }
+
+    fun activateColorCard(
+        id: Int
+    ) {
+        listByColorCard[id].isActive = !listByColorCard[id].isActive
     }
 
 }

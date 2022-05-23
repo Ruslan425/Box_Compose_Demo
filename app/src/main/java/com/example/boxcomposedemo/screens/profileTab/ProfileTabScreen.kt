@@ -13,12 +13,14 @@ import androidx.navigation.compose.rememberNavController
 import com.example.boxcomposedemo.MainViewModel
 import com.example.boxcomposedemo.data.ColorCard
 import com.example.boxcomposedemo.data.User
+import com.example.boxcomposedemo.navigation.Screens
 import com.example.boxcomposedemo.screens.components.DefaultButton
 import com.example.boxcomposedemo.screens.components.DefaultTextField
 
 @Composable
 fun ProfileTabScreen(
-   mainViewModel: MainViewModel
+   mainViewModel: MainViewModel,
+   navHostController: NavHostController
 ) {
     val user = mainViewModel.uiState
 
@@ -50,14 +52,14 @@ fun ProfileTabScreen(
         Spacer(modifier = Modifier.padding(24.dp))
 
         DefaultButton(
-            onClick = { },
+            onClick = { navHostController.navigate(Screens.EditProfileScreen.route) },
             text = "Edit Profile",
             modifier = Modifier
                 .size(width = 350.dp, height = 50.dp)
         )
         Spacer(modifier = Modifier.padding(8.dp))
         DefaultButton(
-            onClick = { },
+            onClick = { navHostController.navigate(Screens.SingIn.route) },
             text = "Logout",
             modifier = Modifier
                 .size(width = 350.dp, height = 50.dp),

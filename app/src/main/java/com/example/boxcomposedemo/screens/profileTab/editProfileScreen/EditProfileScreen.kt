@@ -9,17 +9,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.boxcomposedemo.MainViewModel
 import com.example.boxcomposedemo.data.User
+import com.example.boxcomposedemo.navigation.Screens
 import com.example.boxcomposedemo.screens.components.DefaultButton
 import com.example.boxcomposedemo.screens.components.DefaultEditTextField
 
 @Composable
 fun EditProfileScreen(
     navHostController: NavHostController,
-    user: User
+    viewModel: MainViewModel
 ) {
-    val stateLogin = remember { mutableStateOf(TextFieldValue(user.userName)) }
-    val stateUserName = remember { mutableStateOf(TextFieldValue(user.userName)) }
+    val stateLogin = remember { mutableStateOf(TextFieldValue(viewModel.uiState.userName)) }
+    val stateUserName = remember { mutableStateOf(TextFieldValue(viewModel.uiState.userName)) }
     val statePassword = remember { mutableStateOf(TextFieldValue("")) }
 
     Column(
@@ -51,7 +53,14 @@ fun EditProfileScreen(
         Spacer(modifier = Modifier.padding(24.dp))
 
         DefaultButton(
-            onClick = { },
+            onClick = {
+                viewModel.getUser(
+                    userName = stateUserName.value.text,
+                    email = stateLogin.value.text,
+                    password = statePassword.value.text
+                )
+                navHostController.navigate(Screens.ProfileTab.route)
+            },
             text = "Edit Profile",
             modifier = Modifier
                 .size(width = 350.dp, height = 50.dp),

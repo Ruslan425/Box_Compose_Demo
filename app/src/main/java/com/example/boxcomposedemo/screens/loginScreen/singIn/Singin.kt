@@ -9,13 +9,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.boxcomposedemo.MainViewModel
 import com.example.boxcomposedemo.navigation.Screens
 import com.example.boxcomposedemo.screens.components.DefaultButton
 import com.example.boxcomposedemo.screens.components.DefaultEditTextField
 
 @Composable
 fun SingIn(
-     navHostController: NavHostController
+     navHostController: NavHostController,
+     mainViewModel: MainViewModel
 ) {
     val stateLogin = remember { mutableStateOf(TextFieldValue("")) }
     val statePassword = remember { mutableStateOf(TextFieldValue("")) }
@@ -41,7 +43,14 @@ fun SingIn(
         Spacer(modifier = Modifier.padding(24.dp))
 
         DefaultButton(
-            onClick = { },
+            onClick = {
+                mainViewModel.getUser(
+                    userName = "test",
+                    email = stateLogin.value.text,
+                    password = statePassword.value.text
+                )
+                navHostController.navigate(Screens.SplashTab.route)
+                      },
             text = "Sing in",
             modifier = Modifier
                 .size(width = 350.dp, height = 50.dp)
