@@ -10,7 +10,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.boxcomposedemo.MainViewModel
-import com.example.boxcomposedemo.navigation.Screens
+import com.example.boxcomposedemo.navigation.Screen
 import com.example.boxcomposedemo.screens.components.DefaultButton
 import com.example.boxcomposedemo.screens.components.DefaultEditTextField
 
@@ -62,13 +62,13 @@ fun SingUp(
         DefaultButton(
             onClick = {
 
-                      mainViewModel.getUser(
-                          userName = stateUserName.value.text,
-                          email = stateLogin.value.text,
-                          password = statePassword.value.text
-                      )
+                mainViewModel.getUser(
+                    userName = stateUserName.value.text,
+                    email = stateLogin.value.text,
+                    password = statePassword.value.text
+                )
 
-                navHostController.navigate(Screens.ProfileTab.route)
+                navHostController.navigate(Screen.ProfileTab.route)
             },
             text = "Create Account",
             modifier = Modifier

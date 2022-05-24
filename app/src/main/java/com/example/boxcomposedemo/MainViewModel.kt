@@ -14,7 +14,7 @@ import kotlin.random.Random
 
 class MainViewModel : ViewModel() {
 
-    var uiState by mutableStateOf(User())
+    var user by mutableStateOf(User())
 
     var listByColorCard by mutableStateOf(
         listOf(
@@ -64,7 +64,7 @@ class MainViewModel : ViewModel() {
         )
         val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
         val currentDate = sdf.format(Date())
-        uiState = User(
+        user = User(
             id = id,
             userName = userName,
             email = email,

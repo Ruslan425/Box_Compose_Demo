@@ -6,12 +6,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.boxcomposedemo.MainViewModel
-import com.example.boxcomposedemo.data.User
-import com.example.boxcomposedemo.navigation.Screens
+import com.example.boxcomposedemo.navigation.Screen
 import com.example.boxcomposedemo.screens.components.DefaultButton
 import com.example.boxcomposedemo.screens.components.DefaultEditTextField
 
@@ -20,9 +20,11 @@ fun EditProfileScreen(
     navHostController: NavHostController,
     viewModel: MainViewModel
 ) {
-    val stateLogin = remember { mutableStateOf(TextFieldValue(viewModel.uiState.userName)) }
-    val stateUserName = remember { mutableStateOf(TextFieldValue(viewModel.uiState.userName)) }
+    val stateLogin = remember { mutableStateOf(TextFieldValue(viewModel.user.userName)) }
+    val stateUserName = remember { mutableStateOf(TextFieldValue(viewModel.user.userName)) }
     val statePassword = remember { mutableStateOf(TextFieldValue("")) }
+    val focusManager = LocalFocusManager.current
+
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -54,12 +56,13 @@ fun EditProfileScreen(
 
         DefaultButton(
             onClick = {
+                focusManager.clearFocus()
                 viewModel.getUser(
                     userName = stateUserName.value.text,
                     email = stateLogin.value.text,
                     password = statePassword.value.text
                 )
-                navHostController.navigate(Screens.ProfileTab.route)
+                navHostController.navigate(Screen.ProfileTab.route)
             },
             text = "Edit Profile",
             modifier = Modifier

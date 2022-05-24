@@ -1,12 +1,9 @@
 package com.example.boxcomposedemo.screens.settingsTab
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -17,6 +14,7 @@ import com.example.boxcomposedemo.screens.components.DefaultRadioButton
 fun SettingsTab(
     viewModel: MainViewModel,
 ) {
+
     Box(
         modifier = Modifier
             .padding(8.dp)
@@ -26,11 +24,14 @@ fun SettingsTab(
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(viewModel.uiState.colorCardList) { item ->
+            items(viewModel.user.colorCardList) { item ->
                 DefaultRadioButton(
+                    modifier = Modifier.fillMaxWidth(),
                     text = item.colorName,
                     selected = item.isActive,
-                    onClick = { viewModel.activateColorCard(item.id) }
+                    onClick = {
+                        viewModel.activateColorCard(item.id)
+                    }
                 )
             }
         }
