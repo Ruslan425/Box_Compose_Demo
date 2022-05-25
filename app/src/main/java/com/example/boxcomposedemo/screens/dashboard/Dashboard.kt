@@ -1,4 +1,4 @@
-package com.example.boxcomposedemo.screens.splashTab
+package com.example.boxcomposedemo.screens.dashboard
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -14,8 +14,9 @@ import com.example.boxcomposedemo.navigation.Screen
 import com.example.boxcomposedemo.screens.components.DefaultColorBox
 
 
+
 @Composable
-fun SplashTab(
+fun Dashboard(
     navHostController: NavHostController,
     viewModel: MainViewModel
 ) {

@@ -35,7 +35,7 @@ fun ProfileTabScreen(
             modifier = Modifier
                 .size(width = 350.dp, height = 50.dp),
             lineText = "User Name",
-            text = user.userName
+            text = user.username
         )
         Spacer(modifier = Modifier.padding(4.dp))
         DefaultTextField(

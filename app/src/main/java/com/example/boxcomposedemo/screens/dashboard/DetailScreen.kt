@@ -1,4 +1,4 @@
-package com.example.boxcomposedemo.screens.splashTab
+package com.example.boxcomposedemo.screens.dashboard
 
 
 import androidx.compose.foundation.background

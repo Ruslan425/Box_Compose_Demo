@@ -20,13 +20,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.boxcomposedemo.MainViewModel
 import com.example.boxcomposedemo.data.BottomNavItem
+import com.example.boxcomposedemo.screens.dashboard.Dashboard
 import com.example.boxcomposedemo.screens.loginScreen.singIn.SingIn
 import com.example.boxcomposedemo.screens.loginScreen.singUp.SingUp
 import com.example.boxcomposedemo.screens.profileTab.ProfileTabScreen
 import com.example.boxcomposedemo.screens.profileTab.editProfileScreen.EditProfileScreen
 import com.example.boxcomposedemo.screens.settingsTab.SettingsTab
-import com.example.boxcomposedemo.screens.splashTab.DetailScreen
-import com.example.boxcomposedemo.screens.splashTab.SplashTab
+import com.example.boxcomposedemo.screens.dashboard.DetailScreen
+
 
 
 @Composable
@@ -48,8 +49,8 @@ fun Navigation(
         composable(Screen.SettingsTab.route) {
             SettingsTab(viewModel)
         }
-        composable(Screen.SplashTab.route) {
-            SplashTab(navHostController = navController, viewModel = viewModel)
+        composable(Screen.Dashboard.route) {
+            Dashboard(navHostController = navController, viewModel = viewModel)
         }
         composable(Screen.EditProfileScreen.route) {
             EditProfileScreen(navHostController = navController, viewModel = viewModel)
@@ -103,7 +104,7 @@ fun BottomNavigationBar(
 
 val bottomNavItemList = listOf(
     BottomNavItem(
-        name = "SplashTab",
+        name = "Dashboard",
         route = "splashTab",
         icon = Icons.Default.List
     ),

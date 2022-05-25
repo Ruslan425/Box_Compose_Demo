@@ -20,8 +20,8 @@ fun EditProfileScreen(
     navHostController: NavHostController,
     viewModel: MainViewModel
 ) {
-    val stateLogin = remember { mutableStateOf(TextFieldValue(viewModel.user.userName)) }
-    val stateUserName = remember { mutableStateOf(TextFieldValue(viewModel.user.userName)) }
+    val stateLogin = remember { mutableStateOf(TextFieldValue(viewModel.user.username)) }
+    val stateUserName = remember { mutableStateOf(TextFieldValue(viewModel.user.username)) }
     val statePassword = remember { mutableStateOf(TextFieldValue("")) }
     val focusManager = LocalFocusManager.current
 

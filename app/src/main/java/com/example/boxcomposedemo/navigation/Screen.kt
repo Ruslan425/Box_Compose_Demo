@@ -5,7 +5,7 @@ sealed class Screen(val route: String) {
     object SingUp: Screen("singUp")
     object ProfileTab: Screen("profileTab")
     object SettingsTab: Screen("settingsTab")
-    object SplashTab: Screen("splashTab")
+    object Dashboard: Screen("dashboard")
     object EditProfileScreen: Screen("editProfileScreen")
     object DetailScreen: Screen("detailScreen")
 }

@@ -66,7 +66,7 @@ class MainViewModel : ViewModel() {
         val currentDate = sdf.format(Date())
         user = User(
             id = id,
-            userName = userName,
+            username = userName,
             email = email,
             password = password,
             colorCardList = listByColorCard,
